@@ -1,4 +1,4 @@
-#A project as a beginner 
+# A project as a beginner 
 
 in This project jikan api is beign used to create a react based website for anime where user can search for animes , get anime news and reviews and more info about the anime 
 and project uses bootstrap for its simply design
