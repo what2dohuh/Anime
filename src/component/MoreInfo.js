@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import YouTube from "react-youtube";
 import dateFormat from 'dateformat';
-import { useParams} from 'react-router-dom'; 
+import { useParams,Link} from 'react-router-dom'; 
 import Loader from './Loader';
 import Reviews from './Reviews';
 import News from './News';
@@ -11,49 +11,44 @@ const MoreInfo = () => {
     const [loading,setLoading]=useState(true)
     const [Isloading,setIsLoading]=useState(true)
     const [res,setRes]=useState([])
-    const [rec,setrec ]=useState([])
     const [Rev,setRev]=useState([])
     const [newss,setNew]=useState([])
     const [current, setcurrent] = useState(true);
-    const get=async()=>{
-       const response = await fetch(`https://api.jikan.moe/v4/anime/${mal_id}/full`)
-       const data = await response.json()
-       setRes(data)
-       setLoading(false)
-    }
-    const getRec= async()=>{
-        const response=await fetch('https://api.jikan.moe/v4/recommendations/anime')
-        const json = await response.json()
-        setrec(json.data); 
-    }
-    const getReviews=async()=>{
-        try{
-            const response= await fetch(`https://api.jikan.moe/v4/anime/${mal_id}/reviews`)
-            const json = await response.json()
-            setRev(json.data)
-          
-        }catch(err){
-            console.error(err)
-        }finally{
-            setIsLoading(false)
-        }
-    }
-    const news = async()=>{
-        try{
-            const response= await fetch(`https://api.jikan.moe/v4/anime/${mal_id}/news`)
-            const json = await response.json()
-            setNew(json.data)
-            
-        }catch(err){
-            console.error(err)
-        }finally{
-            setIsLoading(false)
-        }
-    }
+   
     useEffect(()=>{
+        const get=async()=>{
+            const response = await fetch(`https://api.jikan.moe/v4/anime/${mal_id}/full`)
+            const data = await response.json()
+            setRes(data)
+            setLoading(false)
+         }
+     
+         const getReviews=async()=>{
+             try{
+                 const response= await fetch(`https://api.jikan.moe/v4/anime/${mal_id}/reviews`)
+                 const json = await response.json()
+                 setRev(json.data)
+               
+             }catch(err){
+                 console.error(err)
+             }finally{
+                 setIsLoading(false)
+             }
+         }
+         const news = async()=>{
+             try{
+                 const response= await fetch(`https://api.jikan.moe/v4/anime/${mal_id}/news`)
+                 const json = await response.json()
+                 setNew(json.data)
+                 
+             }catch(err){
+                 console.error(err)
+             }finally{
+                 setIsLoading(false)
+             }
+         }
         get()
         news()
-        // getRec()
         getReviews()
     },[])
 
@@ -67,7 +62,7 @@ const MoreInfo = () => {
  <p className='text-center text-uppercase fw-medium font-monospace'>{res.data?.title}</p>
  <p className='text-center text-uppercase fw-medium font-monospace'>{res.data?.title_japanese}</p>
  <div className='container text-center'>
- <img src={res.data?.images.jpg.large_image_url} height='300px'/>
+ <img src={res.data?.images.jpg.large_image_url} alt='img' height='300px'/>
 </div>
 <p className='fw-light text-end'>Year Of Release: {res.data?.year} <br/> Season:{res.data?.season}<br/>Aired:<br/>{ dateFormat(res.data?.aired.from, "mmmm dS, yyyy")}-{ dateFormat(res.data?.aired.to, "mmmm dS, yyyy")}<br/>Studio:{res.data?.studios[0].name}</p>
 {res.data?.genres.map((gn)=><div className='btn btn-secondary' style={{padding:'2px',margin:'2px'}}>#{gn.name}</div>)}<br/>
@@ -77,16 +72,16 @@ Total Episodes: {res.data?.episodes}
 <p className='text-start text-uppercase fw-medium font-monospace'>Trailer:</p>
 
 <YouTube videoId={res.data?.trailer.youtube_id} style={{width:'200px'}} id="video"/>
-<p className='font-monospace' style={{padding:'2px',margin:'2px'}}>Where Can You Watch:{res.data?.streaming.map((da=><p>{da.name}:<br/><a href={da.url} className='link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>{da.url}</a></p>))}</p>
+<p className='font-monospace' style={{padding:'2px',margin:'2px'}}>Where Can You Watch:{res.data?.streaming.map((da=><p>{da.name}:<br/><Link href={da.url} className='link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>{da.url}</Link></p>))}</p>
 <p className='fw-semibold'>Synopsis:</p>
 <p className='fw-normal'>{res.data?.synopsis}</p>
 
 <ul className="nav nav-tabs">
   <li className="nav-item">
-    <a className={`nav-link ${current?'active':''}`} aria-current="page" onClick={()=>setcurrent(true)}>Reviews</a>
+    <Link className={`nav-link ${current?'active':''}`} aria-current="page" onClick={()=>setcurrent(true)}>Reviews</Link>
   </li>
   <li className="nav-item" onClick={()=>setcurrent(false)}>
-    <a className={`nav-link ${current?'':'active'}`} >News</a>
+    <Link className={`nav-link ${current?'':'active'}`} >News</Link>
   </li>
  
 </ul>

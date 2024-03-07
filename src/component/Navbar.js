@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'; 
 import useStore from '../context/searchContext';
 
@@ -17,7 +17,7 @@ const Navbar = () => {
         <nav className="navbar bg-body-tertiary">
          
           <div className="container-fluid">
-           <Link to='/' className='link-offset-2 link-underline link-underline-opacity-0'>  <span className="navbar-brand mb-0 h1">Animes</span></Link>
+           <Link to='/' className='link-offset-2 link-underline link-underline-opacity-0'>  <span className="navbar-brand mb-0 h1">LookAnimes</span></Link>
           
            <form className="d-flex" role="search" onSubmit={e => e.preventDefault()}>
 

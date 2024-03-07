@@ -13,6 +13,8 @@ const App = () => {
   
   const [currentPage, setcurrentPage] = useState(1);
 
+
+useEffect(()=>{
   const getMovies = async () => {
     try {
       const response = await fetch(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=${search}`);
@@ -23,9 +25,8 @@ const App = () => {
       console.error(error);
     } 
   }
-useEffect(()=>{
-
 getMovies()
+
 },[currentPage,btn])
   return (
     <>
@@ -39,7 +40,7 @@ getMovies()
         <span aria-hidden="true">&laquo;</span>
       </Link>
     </li> 
-    <li className="page-item"><a className="page-link" >{currentPage}</a></li> 
+    <li className="page-item"><Link className="page-link" >{currentPage}</Link></li> 
    
    
     <li className="page-item">
