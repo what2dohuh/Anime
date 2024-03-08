@@ -7,15 +7,15 @@ This project uses
 + Bootstrap
 + React
 + Jikan Api
-
+<br/>
+To Visit [Lookanimes](https://lookanimes.onrender.com/)
+<br/>
 ## You can run it on your machine
 
 ``` npm install```
 then 
 ``` npm start ``` 
-<br/>
-To Visit [Lookanimes](https://lookanimes.onrender.com/)
-<br/>
+
 Web will be open in :
-http://localhost:3000](http://localhost:3000 
+[http://localhost:3000](http://localhost:3000)
 
