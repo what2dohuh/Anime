@@ -33,23 +33,6 @@ getMovies()
     {(Loading ? (<Loader/>):(
      
       <>
-       <nav aria-label="Page navigation example">
-  <ul className="pagination justify-content-center">
-    <li className="page-item">
-      <Link className="page-link"  aria-label="Previous"onClick={()=>{if(currentPage>1){setcurrentPage(currentPage-1)}}}>
-        <span aria-hidden="true">&laquo;</span>
-      </Link>
-    </li> 
-    <li className="page-item"><Link className="page-link" >{currentPage}</Link></li> 
-   
-   
-    <li className="page-item">
-      <Link className="page-link" aria-label="Next" onClick={()=>setcurrentPage(currentPage+1)}>
-        <span aria-hidden="true">&raquo;</span>
-      </Link>
-    </li>
-  </ul>
-</nav>
     <div className="container-sm  d-flex flex-grow- flex-fill "style={{padding:"10px"}}>
     <div className="  d-flex flex-wrap justify-content-center" style={{padding:"5px"}}>
 
@@ -68,6 +51,23 @@ getMovies()
         
 
     </div>
+       <nav aria-label="Page navigation example">
+  <ul className="pagination justify-content-center">
+    <li className="page-item">
+      <a className="page-link"  href='#'aria-label="Previous"onClick={()=>{if(currentPage>1){setcurrentPage(currentPage-1)}}}>
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li> 
+    <li className="page-item"><Link className="page-link" >{currentPage}</Link></li> 
+   
+   
+    <li className="page-item">
+      <a className="page-link " aria-label="Next" href='#' onClick={()=>setcurrentPage(currentPage+1)}>
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
     </>))
     }
     </>
