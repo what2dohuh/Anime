@@ -8,7 +8,7 @@ This project uses
 + React
 + Jikan Api
 <br/>
-To Visit [Lookanimes](https://lookanimes.onrender.com/)
+### To Visit [Lookanimes](https://lookanimes.onrender.com/)
 <br/>
 ## You can run it on your machine
 
